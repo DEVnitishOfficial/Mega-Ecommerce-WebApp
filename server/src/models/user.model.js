@@ -49,6 +49,11 @@ const userSchema = new Schema(
       enum: ["USER", "ADMIN"], // enum → enumeration(means,consists of a set of distinct named values.)
       default: "USER",
     },
+    refreshToken: {
+      type: String,
+    },
+    forgotPasswordToken: String,
+    forgotPasswordExpiry: Date,
   },
   {
     timestamps: true,
@@ -63,11 +68,11 @@ userSchema.pre("save", async function (next){
     next()
 })
 
-userSchema.methods.isPasswordCorrect() = async function (password){
+userSchema.methods.isPasswordCorrect = async function (password){
     return await bcrypt.compare(this.password,password)
 }
 
-userSchema.methods.generateAccessToken() = async function (){
+userSchema.methods.generateAccessToken = async function (){
     return jwt.sign(
         {
       _id: this._id,
