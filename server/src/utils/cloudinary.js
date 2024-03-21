@@ -1,7 +1,6 @@
 
 import {v2 as cloudinary} from 'cloudinary'
 import fs from 'fs'
-import { asyncHandler } from './asyncHandler.js'
 
 cloudinary.config({ 
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
@@ -9,22 +8,28 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET 
   });
 
-const uploadOnCloudinary = asyncHandler(async(localfilepath) => {
+const uploadOnCloudinary = async(localfilepath) => {
     try{
         if(!localfilepath) return null
         const response = await cloudinary.uploader.upload(localfilepath,{
-            resource_type:"auto",    
+        resource_type:"auto", 
+        folder: "Mega_ecommerce",
+        width: 250,
+        height: 250,
+        gravity: "faces",
+        crop: "fill",   
         })
-    //   fs.unlinkSync(localfilepath)
+      fs.unlinkSync(localfilepath)
     console.log('response from cloudinary',response)
       return response
     }catch(error){
-        // fs.unlinkSync(localfilepath)
+        fs.unlinkSync(localfilepath)
         console.log('got some error',error)
         return null
     }
-})
+}
 
 export {
     uploadOnCloudinary
 }
+
