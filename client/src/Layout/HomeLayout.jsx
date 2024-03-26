@@ -3,11 +3,13 @@ import Header from "../components/Header"
 
 const HomeLayout = () => {
   return (
-    <div>
-        <Header />
-      
+    <div className="relative min-h-screen">
+    <Header />
+    
+    <div className="absolute bottom-0 w-full">
         <Footer />
     </div>
+</div>
   )
 }
 
