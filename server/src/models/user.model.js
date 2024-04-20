@@ -5,19 +5,13 @@ import crypto from 'crypto'
 
 const userSchema = new Schema(
   {
-    firstName: {
+    yourName: {
         type: String,
         required: [true, "user name is Required"],
-        custom_minLength: [5, "Name must be at least 5 characters"],
+        custom_minLength: [3, "Name must be at least 5 characters"],
         custom_maxLength: [50, "Name must be less than 50 characters"],
         trim: true,
         lowercase: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
-      lowerCase: true,
-      trim: true,
     },
     password: {
         type: String,
