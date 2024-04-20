@@ -29,6 +29,7 @@ const Header = () => {
             <GiShoppingCart className='h-14 w-11' />
             <input
             value={6}
+            readOnly
             className='rounded-2xl w-5 bg-green-600 absolute ml-10 mb-8 text-center text-white '
              type="text" />
             </div>

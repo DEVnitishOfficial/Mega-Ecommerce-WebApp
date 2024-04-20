@@ -103,9 +103,9 @@ const Footer = () => {
 </div>
 
 
-<div className="bg-[#F5F5F5] w-full h-16">
+<div className="bg-[#f5fffa] w-full h-16">
   
-  <div className='flex justify-center items-center space-x-10 mt-3  '> 
+  <div className='flex justify-center items-center space-x-10 mt-6 max-h-3  '> 
     <img className='h-10 cursor-pointer' src={visa} alt="visa" />
     <img className='h-10 cursor-pointer' src={pay1} alt="paypal" />
     <img className='h-10 cursor-pointer' src={master_card} alt="master_card" />
